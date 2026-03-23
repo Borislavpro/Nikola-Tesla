@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nikola Tesla | Life & Legacy</title>
+    <style>
+        :root {
+            --accent: #00d4ff;
+            --bg: #0a0c10;
+            --card-bg: #161b22;
+            --text: #c9d1d9;
+            --transition: 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        header {
+            text-align: center;
+            padding: 60px 20px 30px;
+        }
+
+        h1 {
+            color: var(--accent);
+            font-size: 3rem;
+            text-transform: uppercase;
+            letter-spacing: 5px;
+            margin: 0;
+            text-shadow: 0 0 20px rgba(0, 212, 255, 0.4);
+        }
+
+        /* Navigation Buttons */
+        .nav-container {
+            margin-bottom: 40px;
+            display: flex;
+            gap: 20px;
+        }
+
+        .nav-btn {
+            background: transparent;
+            border: 1px solid var(--accent);
+            color: var(--accent);
+            padding: 10px 25px;
+            cursor: pointer;
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            border-radius: 50px;
+            transition: var(--transition);
+        }
+
+        .nav-btn.active, .nav-btn:hover {
+            background: var(--accent);
+            color: var(--bg);
+            box-shadow: 0 0 15px var(--accent);
+        }
+
+        /* Content Sections */
+        .content-wrapper {
+            position: relative;
+            width: 90%;
+            max-width: 650px;
+            height: 400px; /* Fixed height to keep layout stable during transitions */
+        }
+
+        .section {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: var(--card-bg);
+            padding: 40px;
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            box-sizing: border-box;
+            opacity: 0;
+            transform: translateY(20px);
+            pointer-events: none;
+            transition: opacity var(--transition), transform var(--transition);
+        }
+
+        .section.active {
+            opacity: 1;
+            transform: translateY(0);
+            pointer-events: all;
+        }
+
+        h2 {
+            color: var(--accent);
+            margin-top: 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            padding-bottom: 10px;
+        }
+
+        ul { padding-left: 20px; }
+        li { margin-bottom: 12px; }
+        b { color: #fff; }
+
+        footer {
+            margin-top: auto;
+            padding: 40px;
+            opacity: 0.4;
+            font-size: 0.8rem;
+        }
+
+        /* Electrical spark effect on click */
+        .spark {
+            position: absolute;
+            width: 2px;
+            height: 20px;
+            background: var(--accent);
+            pointer-events: none;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Nikola Tesla</h1>
+    </header>
+
+    <div class="nav-container">
+        <button class="nav-btn active" onclick="showSection('life', this)">Life</button>
+        <button class="nav-btn" onclick="showSection('achievements', this)">Achievements</button>
+    </div>
+
+    <main class="content-wrapper">
+        <section id="life" class="section active">
+            <h2>⚡ Biological Path</h2>
+            <p>
+                Born in 1856 in Smiljan, <b>Nikola Tesla</b> was a Serbian-American inventor whose life was defined by an obsession with electricity. After immigrating to the U.S. in 1884, he worked briefly with Thomas Edison before striking out on his own. 
+            </p>
+            <p>
+                Despite his genius, he was an eccentric figure who lived most of his life in New York hotels, prioritizing research over wealth. He died in 1943, leaving a legacy that powered the modern world.
+            </p>
+        </section>
+
+        <section id="achievements" class="section">
+            <h2>🏆 Major Milestones</h2>
+            <ul>
+                <li><b>Alternating Current (AC):</b> The global standard for power transmission.</li>
+                <li><b>The Tesla Coil:</b> Revolutionized wireless and high-frequency research.</li>
+                <li><b>Radio Principles:</b> Patented the core technologies behind radio transmission.</li>
+                <li><b>Niagara Falls Plant:</b> Designed the first large-scale hydroelectric power plant.</li>
+                <li><b>Remote Control:</b> Demonstrated the first radio-guided vessel in 1898.</li>
+            </ul>
+        </section>
+    </main>
+
+    <footer>
+        1856 – 1943 | Science for Humanity
+    </footer>
+
+    <script>
+        function showSection(sectionId, btn) {
+            // Remove active class from all sections
+            document.querySelectorAll('.section').forEach(sec => {
+                sec.classList.remove('active');
+            });
+            
+            // Remove active class from all buttons
+            document.querySelectorAll('.nav-btn').forEach(b => {
+                b.classList.remove('active');
+            });
+
+            // Activate chosen section and button
+            document.getElementById(sectionId).classList.add('active');
+            btn.classList.add('active');
+        }
+    </script>
+
+</body>
+</html>
